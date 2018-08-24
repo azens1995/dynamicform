@@ -1,0 +1,4 @@
+
+esquid:UselessImportCheck"CRemove this unused import 'okhttp3.logging.HttpLoggingInterceptor'.(‰¼ƒç
+Nsquid:S1118":Add a private constructor to hide the implicit public one.(ñšé7
+Hsquid:S1068".Remove this unused "httpClient" private field.(æóœøÿÿÿÿ
