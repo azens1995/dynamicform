@@ -5,11 +5,11 @@ checkbox).
 Save the retrieved data, so that the user can use the form,being made dynamically to fill it and saved the filled form.
 Options to either send the saved form to the api or delete it or edit it. 
 
-#Things implemented:
+# Things implemented:
 Hit the api call.
 Retrieved the data.
 Populated the data as per the mentioned type, and displayed using the recyclerview.
 Saved the retrieved data using the room database so that user can use it to fill the form while being offline.
 
-#Things where being stucked
+# Things where being stucked
 Saving the filled form. 
