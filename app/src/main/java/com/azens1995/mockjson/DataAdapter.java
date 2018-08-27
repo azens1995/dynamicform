@@ -1,8 +1,10 @@
 package com.azens1995.mockjson;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,18 +15,23 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.azens1995.mockjson.database.AppDatabase;
 import com.azens1995.mockjson.database.Data;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
 
     private List<Data> data;
     private Context context;
+    private final OnItemClickListener listener;
 
-    public DataAdapter(Context context,List<Data> data) {
+
+    public DataAdapter(Context context, List<Data> data, OnItemClickListener clickListener) {
         this.data = data;
         this.context = context;
+        this.listener = clickListener;
     }
 
     @Override
@@ -47,12 +54,12 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
+    public void onBindViewHolder(@NonNull final ViewHolder viewHolder, final int i) {
         if(i == data.size()) {
             viewHolder.button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Toast.makeText(context, "Button Clicked", Toast.LENGTH_LONG).show();
+
                 }
             });
         }
@@ -60,7 +67,6 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
         else{
             viewHolder.name.setText(data.get(i).getDesc());
             if (data.get(i).getType().equalsIgnoreCase("radiobutton")) {
-                viewHolder.radioGroup.removeAllViews();
                 viewHolder.radioGroup.setVisibility(View.VISIBLE);
                 for (int item = 0; item < data.get(i).getOptions().size(); item++) {
                     final RadioButton radioButton = new RadioButton(context);
@@ -71,11 +77,25 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
                 viewHolder.radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
                     @Override
                     public void onCheckedChanged(RadioGroup group, int checkedId) {
-                        Toast.makeText(context,"The checked item is:" + checkedId, Toast.LENGTH_SHORT).show();
+                        for (int j=0; j<group.getChildCount(); j++){
+                            RadioButton btn = (RadioButton) group.getChildAt(j);
+                            if (btn.getId() ==checkedId){
+                                Toast.makeText(context,"The checked item is: " + btn.getText() , Toast.LENGTH_SHORT).show();
+                            }
+                        }
+
+
                     }
                 });
             } else if (data.get(i).getType().equalsIgnoreCase("text")) {
                 viewHolder.answer.setVisibility(View.VISIBLE);
+
+                String answer = viewHolder.answer.getText().toString();
+                if (!answer.isEmpty()){
+                    viewHolder.answer.setText(answer);
+                    viewHolder.answer.setSelection(answer.length());
+                    viewHolder.answer.requestFocus();
+                }
             }
             /**else if (data.get(i).getType().equalsIgnoreCase("checkbox")){
                 viewHolder.linearLayout.setVisibility(View.VISIBLE);
@@ -121,7 +141,11 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
             button = (Button) itemView.findViewById(R.id.save);
             //linearLayout = (LinearLayout) itemView.findViewById(R.id.linearcheck);
 
-
         }
+
     }
+        interface OnItemClickListener{
+            void onRowClick(Data data);
+        }
+
 }

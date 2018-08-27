@@ -1,4 +1,7 @@
 
-gsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(‡ðÞÐ8–²ð¶Ö,
-lsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(°ôÞóýÿÿÿÿ8–²ð¶Ö,
-3squid:S2176"Rename this class.(Â×žÖúÿÿÿÿ8–²ð¶Ö,
+asquid:UselessImportCheck"3Remove this unused import 'android.text.TextUtils'.(û˜½Õøÿÿÿÿ8å¨—Ï×,
+3squid:S2176"Rename this class.(Â×žÖúÿÿÿÿ8å¨—Ï×,
+gsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(‡ðÞÐ8å¨—Ï×,
+[squid:UselessImportCheck"3Remove this unused import 'android.content.Intent'.(³ð‹G8å¨—Ï×,
+nsquid:S3776"RRefactor this method to reduce its Cognitive Complexity from 20 to the 15 allowed.(ÏŽ¯»8å¨—Ï×,
+lsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(°ôÞóýÿÿÿÿ8å¨—Ï×,

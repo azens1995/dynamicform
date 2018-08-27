@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.Toast;
+import com.azens1995.mockjson.DataAdapter;
 
 import com.azens1995.mockjson.api.DataClient;
 import com.azens1995.mockjson.api.ServiceGenerator;
@@ -37,13 +38,15 @@ public class MainActivity extends AppCompatActivity {
 
         recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+
+        save = (Button) findViewById(R.id.bAdd);
         db = AppDatabase.getAppDatabase(this);
 
-        if (NetworkUtils.isOnline(this)) {
+        if (NetworkUtils.isOnline(this) && db.dataDao().getAllData().size() ==0) {
                 loadJSON();
         }else {
-            DataAdapter dataAdapter = 
-                    new DataAdapter(this, new ArrayList<Data>(db.dataDao().getAllData()));
+            DataAdapter dataAdapter = new
+                    DataAdapter(this, new ArrayList<Data>(db.dataDao().getAllData()));
             recyclerView.setAdapter(dataAdapter);
 
         }

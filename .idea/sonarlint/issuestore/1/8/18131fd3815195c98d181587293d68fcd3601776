@@ -1,5 +1,6 @@
 
-isquid:UnusedPrivateMethod":Remove this unused private "fetchDataFromDatabase" method.(§€ÔŸÿÿÿÿÿ8ÙÏ¤ÈÖ,
-Dsquid:S1068"(Remove this unused "save" private field.(Ò‰Íõ8ÙÏ¤ÈÖ,
-_squid:HiddenFieldCheck"8Rename "data" which hides the field declared at line 31.(ñ˜õà8ÙÏ¤ÈÖ,
-Ksquid:S1905"/Remove this unnecessary cast to "RecyclerView".(”°«ˆ8ÙÏ¤ÈÖ,
+osquid:S1450"SRemove the "save" field and declare it as a local variable in the relevant methods.(Ò‰Íõ8Ò‹³Ï×,
+Dsquid:S1068"(Remove this unused "save" private field.(Ò‰Íõ8Ò‹³Ï×,
+Zsquid:S1155">Use isEmpty() to check whether the collection is empty or not.(›ÊŠË8Ò‹³Ï×,
+isquid:UnusedPrivateMethod":Remove this unused private "fetchDataFromDatabase" method.(§€ÔŸÿÿÿÿÿ8Ò‹³Ï×,
+_squid:HiddenFieldCheck"8Rename "data" which hides the field declared at line 32.(ñ˜õà8Ò‹³Ï×,

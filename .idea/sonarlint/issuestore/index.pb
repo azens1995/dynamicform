@@ -9,8 +9,6 @@ X
 (gradle/wrapper/gradle-wrapper.properties,f/b/fbe448ebfc3eb2d4e308f6b8b043666f5b57235e
 @
 app/build.gradle,f/4/f4a01d6a4fcb971362ec00a83903fd3902f52164
-i
-9app/src/main/java/com/azens1995/mockjson/DataAdapter.java,7/4/74fda60ecd58744d427eea53af6c11ef651bb029
 r
 Bapp/src/main/java/com/azens1995/mockjson/database/AppDatabase.java,9/6/968a071f4ec050e7a879b2ae4555d27ad92e125b
 n
@@ -29,3 +27,15 @@ t
 Dapp/src/main/java/com/azens1995/mockjson/database/DataConverter.java,f/b/fbf8e362fe4a67b8a5548951e629cc3ef9de5309
 P
  app/src/main/AndroidManifest.xml,8/c/8c55c3ccc257e5907959013f99656e4c8ec3903e
+Z
+*app/src/main/res/layout/activity_first.xml,5/8/58fad05cf49ad786dcdac8d97682f638f538e3fc
+_
+/app/src/main/res/layout/activity_saved_data.xml,c/4/c4e8e9a971ae6af8f4aa0d09cc70d41ba845d0f4
+k
+;app/src/main/java/com/azens1995/mockjson/FirstActivity.java,6/a/6ad786465e2fdb8969aac3d5068988e896561dc0
+o
+?app/src/main/java/com/azens1995/mockjson/SavedDataActivity.java,8/6/868e152e2e4abae31912118fe7380ef955544e9a
+j
+:app/src/main/java/com/azens1995/mockjson/DataResponse.java,f/c/fc537651bf118d43efe9f8109acce31d52e374a9
+i
+9app/src/main/java/com/azens1995/mockjson/DataAdapter.java,7/4/74fda60ecd58744d427eea53af6c11ef651bb029
