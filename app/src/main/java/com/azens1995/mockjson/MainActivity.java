@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.Toast;
 import com.azens1995.mockjson.DataAdapter;
 
+import com.azens1995.mockjson.adapter.MyAdapter;
 import com.azens1995.mockjson.api.DataClient;
 import com.azens1995.mockjson.api.ServiceGenerator;
 import com.azens1995.mockjson.database.AppDatabase;
@@ -26,7 +27,6 @@ import retrofit2.Response;
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = MainActivity.class.getSimpleName() ;
     private RecyclerView recyclerView;
-    private Button save;
 
     AppDatabase db;
     List<Data> data;
@@ -39,16 +39,22 @@ public class MainActivity extends AppCompatActivity {
         recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
 
-        save = (Button) findViewById(R.id.bAdd);
         db = AppDatabase.getAppDatabase(this);
 
+        //db.dataDao().getAllData().size() ==0
         if (NetworkUtils.isOnline(this) && db.dataDao().getAllData().size() ==0) {
                 loadJSON();
         }else {
             DataAdapter dataAdapter = new
                     DataAdapter(this, new ArrayList<Data>(db.dataDao().getAllData()));
             recyclerView.setAdapter(dataAdapter);
-
+//            MyAdapter myAdapter = new MyAdapter(MainActivity.this, new ArrayList<Data>(db.dataDao().getAllData()), new MyAdapter.OnItemClickListener() {
+//                @Override
+//                public void onItemClick(Data data) {
+//                    Toast.makeText(getApplicationContext(), "Item clicked", Toast.LENGTH_SHORT).show();
+//                }
+//            });
+//            recyclerView.setAdapter(myAdapter);
         }
 
     }
@@ -69,6 +75,12 @@ public class MainActivity extends AppCompatActivity {
                 Log.d(TAG, "onResponse: positive response");
                 List<Data> data = response.body().getData();
                 recyclerView.setAdapter(new DataAdapter(MainActivity.this, data));
+//                recyclerView.setAdapter(new MyAdapter(MainActivity.this, data, new MyAdapter.OnItemClickListener() {
+//                    @Override
+//                    public void onItemClick(Data data) {
+//                        Toast.makeText(getApplicationContext(), "Item clicked", Toast.LENGTH_SHORT).show();
+//                    }
+//                }));
                 saveData(data);
             }
 

@@ -5,10 +5,12 @@ import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -25,13 +27,13 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
 
     private List<Data> data;
     private Context context;
-    private final OnItemClickListener listener;
+    boolean isSelected  = false;
+    int previousSelectedPosition = -1;
 
 
-    public DataAdapter(Context context, List<Data> data, OnItemClickListener clickListener) {
+    public DataAdapter(Context context, List<Data> data) {
         this.data = data;
         this.context = context;
-        this.listener = clickListener;
     }
 
     @Override
@@ -59,7 +61,6 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
             viewHolder.button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
                 }
             });
         }
@@ -72,19 +73,20 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
                     final RadioButton radioButton = new RadioButton(context);
                     radioButton.setId(item + 1);
                     radioButton.setText(data.get(i).getOptions().get(item));
+                    radioButton.setChecked(true);
                     viewHolder.radioGroup.addView(radioButton);
+
                 }
                 viewHolder.radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
                     @Override
                     public void onCheckedChanged(RadioGroup group, int checkedId) {
                         for (int j=0; j<group.getChildCount(); j++){
                             RadioButton btn = (RadioButton) group.getChildAt(j);
+                            int checked = group.getCheckedRadioButtonId();
                             if (btn.getId() ==checkedId){
                                 Toast.makeText(context,"The checked item is: " + btn.getText() , Toast.LENGTH_SHORT).show();
                             }
                         }
-
-
                     }
                 });
             } else if (data.get(i).getType().equalsIgnoreCase("text")) {
@@ -144,8 +146,5 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
         }
 
     }
-        interface OnItemClickListener{
-            void onRowClick(Data data);
-        }
 
 }
